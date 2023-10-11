@@ -1,4 +1,4 @@
-import Amplify, { DataStore } from "aws-amplify";
+import Amplify, { Auth, DataStore } from "aws-amplify";
 import { Post } from "./models";
 import config from "./aws-exports";
 
@@ -31,20 +31,35 @@ const pullData = async () => {
 
 pullData();
 
-// let currentUser = null
+let currentUser = null;
 
-// const toggleNavBar = () => {
-//   if (currentUser) {
-//     document.querySelector('.logged-in').classList.add('hidden')
-//     document.querySelector('.logged-in').classList.add('hidden')
-//     document.querySelector('#sign-out').classList.remove('hidden')
-//     document.querySelector('#create-post').classList.remove('hidden')
-//   } else {
-//     document.querySelector('.logged-in').classList.remove('hidden')
-//     document.querySelector('.logged-in').classList.remove('hidden')
-//     document.querySelector('#sign-out').classList.add('hidden')
-//     document.querySelector('#create-post').classList.add('hidden')
-//   }
-// }
+const toggleNavBar = () => {
+  if (currentUser) {
+    document.querySelector(".logged-in").classList.add("hidden");
+    document.querySelector(".logged-in").classList.add("hidden");
+    document.querySelector("#sign-out").classList.remove("hidden");
+    document.querySelector("#create-post").classList.remove("hidden");
+  } else {
+    document.querySelector(".logged-in").classList.remove("hidden");
+    document.querySelector(".logged-in").classList.remove("hidden");
+    document.querySelector("#sign-out").classList.add("hidden");
+    document.querySelector("#create-post").classList.add("hidden");
+  }
+};
 
-// link: https://binaryville.com/images/characters/dolores-disc.png
+const getCurrentUser = async () => {
+  try {
+    currentUser = await Auth.currentAuthenticatedUser();
+  } catch (err) {
+    console.log(err);
+    currentUser = null;
+  }
+  toggleNavBar();
+};
+
+getCurrentUser();
+
+document.getElementById("sign-out").addEventListener("click", async () => {
+  await Auth.signOut();
+  window.location.href = "/";
+});
