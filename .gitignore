@@ -2,6 +2,7 @@
 node_modules
 .tmp
 npm-debug.log
+.cache
 
 #amplify-do-not-edit-begin
 amplify/\#current-cloud-backend
