@@ -101,6 +101,13 @@ export const schema = {
                     "isRequired": true,
                     "attributes": []
                 },
+                "name": {
+                    "name": "name",
+                    "isArray": false,
+                    "type": "String",
+                    "isRequired": true,
+                    "attributes": []
+                },
                 "profilepic": {
                     "name": "profilepic",
                     "isArray": false,
@@ -154,5 +161,5 @@ export const schema = {
     "enums": {},
     "nonModels": {},
     "codegenVersion": "3.4.4",
-    "version": "078b2d8fefc54060ee13b4b54a6c0150"
+    "version": "d2b89022636077bf5a2540d41cfa3a60"
 };

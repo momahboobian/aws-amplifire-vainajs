@@ -46,6 +46,7 @@ type EagerAuthor = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly name: string;
   readonly profilepic?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
@@ -57,6 +58,7 @@ type LazyAuthor = {
     readOnlyFields: 'createdAt' | 'updatedAt';
   };
   readonly id: string;
+  readonly name: string;
   readonly profilepic?: string | null;
   readonly createdAt?: string | null;
   readonly updatedAt?: string | null;
